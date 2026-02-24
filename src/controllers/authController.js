@@ -92,11 +92,20 @@ const loginUser=async (req,res) => {
 
 
     } catch (error) {
-        
+        console.log(error.message)
+    }
+}
+
+const logoutUser=async (req,res) => {
+    try {
+        res.clearCookie("token")
+        return res.json({success:true,message:"Logout successfully"})
+    } catch (error) {
+        console.log(error.message)
     }
 }
 
 
 module.exports={
-    registerUser, loginUser
+    registerUser, loginUser, logoutUser
 }
